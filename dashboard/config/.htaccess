@@ -1,0 +1,5 @@
+<FilesMatch ".json$">
+  Order allow,deny
+  Deny from all
+  ErrorDocument 403 "Akses ke file JSON dilarang."
+</FilesMatch>
